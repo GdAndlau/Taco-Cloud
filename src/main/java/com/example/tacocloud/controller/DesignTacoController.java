@@ -1,8 +1,8 @@
 package com.example.tacocloud.controller;
 
-import com.example.tacocloud.Taco;
+import com.example.tacocloud.model.Taco;
 import org.springframework.ui.Model;
-import com.example.tacocloud.Ingredient;
+import com.example.tacocloud.model.Ingredient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.tacocloud.Ingredient.Type;
+import com.example.tacocloud.model.Ingredient.Type;
 
 
 @Slf4j
