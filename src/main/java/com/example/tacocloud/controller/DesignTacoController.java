@@ -1,10 +1,14 @@
 package com.example.tacocloud.controller;
 
 import com.example.tacocloud.model.Taco;
+import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import com.example.tacocloud.model.Ingredient;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
@@ -52,5 +56,17 @@ public class DesignTacoController {
                 .stream()
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
+    }
+
+    //tag::processDesignValidated[]
+    @PostMapping
+    public String processDesign(@Valid Taco design, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            return "design";
+        }
+        // Save the taco design...
+        // We'll do this in chapter 3
+        log.info("Processing design: " + design);
+        return "redirect:/orders/current";
     }
 }

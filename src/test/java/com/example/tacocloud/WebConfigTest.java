@@ -1,6 +1,6 @@
 package com.example.tacocloud;
 
-import com.example.tacocloud.controller.HomeController;
+import com.example.tacocloud.configuration.WebConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +15,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(HomeController.class)
-public class HomeControllerTest {
-    @Autowired
-    private MockMvc mvc;
+@WebMvcTest
+public class WebConfigTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void home() throws Exception {
+    public void testHomePage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
